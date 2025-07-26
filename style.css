@@ -1,0 +1,218 @@
+/* ZEN大学起業サークル ホームページ CSS */
+
+/* リセット・基本設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Meiryo', sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+/* ヘッダー */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.headerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.globalNav a {
+  color: #333;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 2px solid #667eea;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+}
+
+.globalNav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(45deg, #764ba2, #667eea);
+}
+
+/* メインコンテンツ */
+main {
+  padding: 60px 20px 80px;
+}
+
+.mainInner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  text-align: center;
+}
+
+h4 {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  text-align: justify;
+  padding: 0 10px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* フッター */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: auto;
+}
+
+.footerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+small {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .headerInner {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  main {
+    padding: 40px 15px 60px;
+  }
+  
+  section {
+    padding: 35px 25px;
+    border-radius: 15px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  h4 {
+    font-size: 1.1rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  section {
+    padding: 25px 20px;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  .globalNav a {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
