@@ -1,4 +1,4 @@
-/* ZEN大学起業サークル ホームページ CSS */
+/* ZEN大学起業サークル 活動ブログ CSS */
 
 /* リセット・基本設定 */
 * {
@@ -28,7 +28,7 @@ header {
 .headerInner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 20px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,6 +44,11 @@ header {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.globalNav {
+  display: flex;
+  gap: 15px;
+}
+
 .globalNav a {
   color: #333;
   text-decoration: none;
@@ -52,94 +57,269 @@ header {
   border-radius: 30px;
   font-weight: bold;
   transition: all 0.3s ease;
+  background: white;
+}
+
+.globalNav a:hover,
+.globalNav a.active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
   background: linear-gradient(45deg, #667eea, #764ba2);
   color: white;
 }
 
-.globalNav a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-  background: linear-gradient(45deg, #764ba2, #667eea);
-}
-
 /* メインコンテンツ */
 main {
-  padding: 60px 20px 80px;
+  padding: 40px 20px 80px;
 }
 
 .mainInner {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-section {
+/* ページヘッダー */
+.pageHeader {
+  text-align: center;
+  margin-bottom: 50px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  padding: 50px 40px;
+  padding: 40px 30px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
 }
 
-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-  background-size: 200% 100%;
-  animation: gradientShift 3s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-h2 {
-  font-size: 2.2rem;
+.pageHeader h2 {
+  font-size: 2.5rem;
   margin-bottom: 15px;
   background: linear-gradient(45deg, #667eea, #764ba2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: bold;
-  text-align: center;
 }
 
-h4 {
-  font-size: 1.3rem;
-  color: #555;
-  margin-bottom: 30px;
-  text-align: center;
+.pageHeader p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* ブログコンテナ */
+.blogContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+/* ブログ記事一覧 */
+.blogPosts {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ブログ記事カード */
+.blogPost {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 0;
+}
+
+.blogPost:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.postImage {
   position: relative;
-  padding-bottom: 15px;
+  overflow: hidden;
 }
 
-h4::after {
+.postImage img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blogPost:hover .postImage img {
+  transform: scale(1.05);
+}
+
+.postContent {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.postMeta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.postDate {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.postCategory {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.postTitle {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.postTitle a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.postTitle a:hover {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.postExcerpt {
+  color: #666;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.readMore {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.readMore:hover {
+  border-bottom-color: #667eea;
+}
+
+/* サイドバー */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sidebarWidget {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarWidget h4 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.sidebarWidget h4::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
+  left: 0;
+  width: 40px;
   height: 3px;
   background: linear-gradient(90deg, #667eea, #764ba2);
   border-radius: 2px;
 }
 
-p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  text-align: justify;
-  padding: 0 10px;
+.categoryList,
+.recentPosts,
+.archiveList {
+  list-style: none;
 }
 
-p:last-child {
+.categoryList li,
+.archiveList li {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.categoryList li:last-child,
+.archiveList li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.categoryList a,
+.archiveList a {
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.categoryList a:hover,
+.archiveList a:hover {
+  color: #667eea;
+}
+
+.categoryList span,
+.archiveList span {
+  background: #f0f0f0;
+  color: #666;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.recentPosts li {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.recentPosts li:last-child {
   margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.recentPosts a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.recentPosts a:hover {
+  color: #667eea;
 }
 
 /* フッター */
@@ -164,6 +344,21 @@ small {
 }
 
 /* レスポンシブデザイン */
+@media (max-width: 992px) {
+  .blogContainer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .blogPost {
+    grid-template-columns: 1fr;
+  }
+  
+  .postImage img {
+    height: 200px;
+  }
+}
+
 @media (max-width: 768px) {
   .headerInner {
     flex-direction: column;
@@ -171,48 +366,67 @@ small {
     padding: 15px 20px;
   }
   
+  .globalNav {
+    gap: 10px;
+  }
+  
+  .globalNav a {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
   .logo {
     font-size: 1.5rem;
   }
   
   main {
-    padding: 40px 15px 60px;
+    padding: 30px 15px 60px;
   }
   
-  section {
-    padding: 35px 25px;
-    border-radius: 15px;
+  .pageHeader {
+    padding: 30px 20px;
+    margin-bottom: 30px;
   }
   
-  h2 {
-    font-size: 1.8rem;
+  .pageHeader h2 {
+    font-size: 2rem;
   }
   
-  h4 {
-    font-size: 1.1rem;
+  .blogPost {
+    margin-bottom: 20px;
   }
   
-  p {
-    font-size: 1rem;
-    padding: 0 5px;
+  .postContent {
+    padding: 25px 20px;
+  }
+  
+  .postTitle {
+    font-size: 1.2rem;
+  }
+  
+  .sidebarWidget {
+    padding: 25px 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .logo {
-    font-size: 1.3rem;
+  .pageHeader h2 {
+    font-size: 1.8rem;
   }
   
-  section {
-    padding: 25px 20px;
+  .pageHeader p {
+    font-size: 1rem;
   }
   
-  h2 {
-    font-size: 1.6rem;
+  .postContent {
+    padding: 20px 15px;
   }
   
-  .globalNav a {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+  .postTitle {
+    font-size: 1.1rem;
+  }
+  
+  .sidebarWidget {
+    padding: 20px 15px;
   }
 }
